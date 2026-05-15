@@ -5,7 +5,7 @@ import { state, GAME_TIME } from "./state.js";
 
 // 結果音（結果画面表示から0.5秒後に再生する）
 const resultSound  = new Audio("sounds/result.mp3");
-resultSound.volume = 0.7;
+resultSound.volume = 0.3;
 
 // =========================
 // DOM取得
