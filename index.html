@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Game</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ultra&family=Orbitron:wght@700&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:wght@400;700&family=DotGothic16&family=Yomogi&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- スタート画面 -->
+    <div id="start">
+        <div id="start-top">
+            <div id="start-title">TYPING GAME</div>
+            <div id="start-sub">TYPE AS FAST AS YOU CAN</div>
+        </div>
+        <!-- イラストエリア -->
+        <div id="start-illust-area">
+            <img id="start-illust" src="images/start.png" alt="スタートイラスト">
+        </div>
+        <!-- ボタンエリア -->
+        <div id="start-bottom">
+            <button id="start-btn">▶ START</button>
+            <div id="start-hint">or press SPACE to start</div>
+        </div>
+    </div>
+
+
+    <!-- ゲーム画面 -->
+    <div id="game">
+        <!-- イラストエリア -->
+        <div id="illust-area">
+            <img id="illust" src="images/illust.png" alt="イラスト">
+        </div>
+
+        <!-- 入力エリア -->
+        <div id="input-area">
+            <p id="reading"></p>
+            <p id="word"></p>
+            <div id="timer-bar-container">
+                <div id="timer-bar"></div>
+            </div>
+
+            <!-- ミス回数表示 -->
+            <p>ERROR: <span id="miss">0</span></p>
+
+            <!-- コンボ数表示 -->
+            <p>COMBO: <span id="combo">000</span></p>
+        </div>
+    </div>
+
+    <!-- Result画面 -->
+    <div id="result" style="display: none;">
+        <!-- イラストエリア -->
+        <div id="result-illust-area">
+            <img id="result-illust" src="images/illust02.png" alt="リザルトイラスト">
+        </div>
+
+        <div id="result-content">
+
+            <!-- コースター画像 -->
+            <!-- position:absolute で result-content の中央に重ねて表示する -->
+            <!-- 初期状態は scale(0) で非表示にしておき JS でアニメーションを開始する -->
+            <!-- src は ui.js の showResult() でスコアに応じて切り替える -->
+            <img id="coaster" src="" alt="コースター">
+
+            <div id="cup">
+                <div id="cup-logo">TYPING GAME</div>
+                <hr class="cup-divider">
+
+                <div class="cup-row">
+                    <div class="cb" id="cb-score">
+                        <svg width="12" height="10" viewBox="0 0 12 10">
+                            <polyline class="check-line" points="1,5 4,8 11,1"
+                                fill="none" stroke="#a07850" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="cup-info">
+                        <span class="cup-key">SCORE</span>
+                        <span class="cup-val large" id="result-correct">000000000</span>
+                    </div>
+                </div>
+                <hr class="cup-divider">
+
+                <div class="cup-row">
+                    <div class="cb" id="cb-miss">
+                        <svg width="12" height="10" viewBox="0 0 12 10">
+                            <polyline class="check-line" points="1,5 4,8 11,1"
+                                fill="none" stroke="#a07850" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="cup-info">
+                        <span class="cup-key">ERRORS</span>
+                        <span class="cup-val" id="result-miss"></span>
+                    </div>
+                </div>
+
+                <div class="cup-row">
+                    <div class="cb" id="cb-combo">
+                        <svg width="12" height="10" viewBox="0 0 12 10">
+                            <polyline class="check-line" points="1,5 4,8 11,1"
+                                fill="none" stroke="#a07850" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="cup-info">
+                        <span class="cup-key">MAX COMBO</span>
+                        <span class="cup-val" id="result-combo"></span>
+                    </div>
+                </div>
+
+                <div class="cup-row">
+                    <div class="cb" id="cb-speed">
+                        <svg width="12" height="10" viewBox="0 0 12 10">
+                            <polyline class="check-line" points="1,5 4,8 11,1"
+                                fill="none" stroke="#a07850" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="cup-info">
+                        <span class="cup-key">SPEED</span>
+                        <span class="cup-val" id="result-speed-wrap">
+                            <span id="result-speed"></span>
+                            <span class="cup-unit">key/s</span>
+                        </span>
+                    </div>
+                </div>
+
+                <hr class="cup-divider">
+                <div id="cup-stamp">WELL<br>DONE</div>
+            </div>
+            <div id="cup-bottom"></div>
+            <p id="result-restart">Enterキーで再スタート</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
+
