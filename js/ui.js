@@ -214,6 +214,8 @@ export function showResult() {
     // スコアに応じてコースター画像を決定する
     let coasterSrc;
     if (state.score >= 21000) {
+        coasterSrc = "images/coaster_04.png"; // レジェンド
+    } else if (state.score >= 15000) {
         coasterSrc = "images/coaster_03.png"; // エクセレント
     } else if (state.score >= 10000) {
         coasterSrc = "images/coaster_02.png"; // グッド
